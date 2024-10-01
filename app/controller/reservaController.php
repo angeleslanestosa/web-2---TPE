@@ -1,5 +1,5 @@
 <?php
-require_once 'app/model/dbReservas.php';
+require_once 'app/model/reservasModel.php';
 require_once 'app/view/reservaView.php';
 
 class reservaController{
@@ -7,7 +7,7 @@ class reservaController{
     private $view;
 
     public function __construct() {
-        $this->model= new dbReservas();
+        $this->model= new reservasModel();
         $this->view= new reservaView();
 
         
@@ -16,6 +16,9 @@ class reservaController{
     function showHome(){
        $reservas=$this->model->getReservas();
        $this->view->showReservas($reservas);
-    }
+       require_once 'app/view/homeView.php';   
+       
+       
+    }                                  
 
 }
