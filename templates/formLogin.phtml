@@ -1,0 +1,40 @@
+<?php
+require_once 'templates/header.phtml';
+?>
+
+<?php if ($error): ?>
+    <div class='alert' role='alert'>
+        <?= $error ?>
+    </div>
+<?php endif ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+
+
+    <form action="login" method="post">
+        <label for="nombre">Ingrese nombre de usuario</label>
+        <input type="text" name="nombre" id="nombre" required>
+
+        <label for="password">Ingrese contraseña</label>
+        <input type="password" name="password" id="password" required>
+
+        <button type="submit">Iniciar Sesión</button>
+
+
+    </form>
+
+
+    
+</body>
+</html>
+
+
+<?php
+require_once 'templates/footer.phtml';
+?>

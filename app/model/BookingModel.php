@@ -1,5 +1,5 @@
 <?php
-class reservasModel{   
+class BookingModel{   
 
     function getConnection(){
         $db= new PDO('mysql:host=localhost; dbname=sistemadereservas; charser= utf8', 'root','');
@@ -7,7 +7,7 @@ class reservasModel{
 
     }
 
-    public function getReservas(){
+    public function getBookings(){
         $db = $this->getConnection();
         $query= $db->prepare('SELECT * from reserva');
         $query -> execute();

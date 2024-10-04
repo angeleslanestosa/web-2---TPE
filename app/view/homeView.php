@@ -1,5 +1,6 @@
 <?php
-require_once 'app/controller/reservaController.php';
+require_once 'app/controller/bookingController.php';
+require_once 'templates/header.phtml';
 ?>
 
 <!DOCTYPE html>
@@ -14,8 +15,8 @@ require_once 'app/controller/reservaController.php';
     
     <style>
         /* Estilos directamente en el archivo PHP usando Bootstrap */
-        .background-img {
-            background-image: url('images/img1.png');
+        .bg-image {
+            background-image: url('images/img1.jpg');
             background-size: cover;
             background-position: center;
             height: 100vh; /* 100% de la altura de la ventana */
@@ -28,7 +29,7 @@ require_once 'app/controller/reservaController.php';
         <div class="text-center text-white">
             <h1>Bienvenido a TripScript</h1>
             <p>Gestiona tus reservas hoteleras fácilmente.</p>
-            <a href="#" class="btn btn-primary">Comenzar</a>
+            <a href="#" class="btn btn-primary">Reservá ahora</a>
         </div>
     </div>
 
