@@ -4,7 +4,7 @@ class reservaView{
     
     function showReservas($reservas){
         foreach($reservas as $reserva){
-            echo $reserva->id;
+            echo $reserva->DESTINO;
         }
     }
 }

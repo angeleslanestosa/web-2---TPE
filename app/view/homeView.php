@@ -1,5 +1,6 @@
 <?php
 require_once 'app/controller/reservaController.php';
+require_once 'templates/header.phtml';
 ?>
 
 <!DOCTYPE html>
