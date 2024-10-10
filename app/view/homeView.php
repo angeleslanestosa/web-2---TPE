@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
 require_once 'app/controller/bookingController.php';
-=======
-require_once 'app/controller/reservaController.php';
->>>>>>> bf62ccc8cfe1160f9a067acce6ae27633f15608e
 require_once 'templates/header.phtml';
 ?>
 

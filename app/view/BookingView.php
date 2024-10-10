@@ -9,6 +9,8 @@ class BookingView{
         }
     }
 
-
+    function showFormBookin(){
+        require_once 'templates/formBooking.phtml';
+    }
 
 }

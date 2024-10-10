@@ -19,6 +19,18 @@ class BookingController{
        require_once 'app/view/homeView.php';   
        
        
-    }                                  
+    } 
+    
+    function addBooking(){
+        $this->view->showFormBookin();
+        if(isset ($_POST['destination'])){
+            $destination= $_POST['destination'];
+            $housing= $_POST['housing'];
+            $checkIn= $_POST['checkin'];
+            $checkOut= $_POST['checkout'];
+            $userId=2;
+            $this->model->insertBooking($userId,$destination, $housing, $checkIn,$checkOut);
+        }
+    }
 
 }

@@ -15,4 +15,10 @@ class BookingModel{
         return $reservas;
     }
 
+    public function insertBooking($userId,$destination, $housing, $chekIn,$chekOut){
+        $db= $this->getConnection();
+        $querry= $db-> prepare('INSERT INTO reserva(IDUSUARIO,DESTINO, ALOJAMIENTO, CHECKIN, CHECKOUT) VALUES(?,?,?,?)');
+        $querry-> execute([$userId,$destination,$housing,$chekIn,$chekOut]);
+        }
+
 }

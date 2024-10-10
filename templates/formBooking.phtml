@@ -1,0 +1,21 @@
+<?php require_once 'templates/header.phtml'?>
+<form action="booking" method="post">
+    <div class="mb-3">
+        <label for="destination">Ingrese destino</label>
+        <input type="text" name="destination" >
+    </div>
+    <div class="mb-3">
+        <label for="housing">Ingrese alojamiento</label>
+        <input type="text" name="housing" >
+    </div>
+    <div class="mb-3">
+        <label for="checkin">Ingrese fecha de chek-in</label>
+        <input type="date" name="checkin">
+    </div>
+    <div class="mb-3">
+        <label for="checkout">Ingree fecha de check-out</label>
+        <input type="date" name="checkout">
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+<?php require_once 'templates/footer.phtml'?>

@@ -1,12 +1,7 @@
 <?php 
-<<<<<<< HEAD
 require_once 'app/controller/bookingController.php';
 require_once 'app/controller/authController.php';
-    
-=======
-require_once 'app/controller/reservaController.php';
 require_once 'app/controller/userController.php';    
->>>>>>> bf62ccc8cfe1160f9a067acce6ae27633f15608e
 
     // base_url para redirecciones y base tag
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -21,35 +16,23 @@ require_once 'app/controller/userController.php';
     
     switch ($params[0]) {
         case 'Home':
-<<<<<<< HEAD
-            $controller = new BookingController();
-            $controller->showHome();
-            break;
-        //case'booking':
-        //    $controller= new resrvaController();
-        // if(logeado){
-        //    $controller-> addBooking($params[1]);
-        // }else{
-        //      advertencia();}
-=======
-          $controller = new reservaController();
+          $controller = new BookingController();
           $controller->showHome();                                                                                   
           break;
         case 'registrarse':
           $controller= new userController();
           $controller->showRegister();
           break;
-        //case'booking':
-        //    $controller= new resrvaController();
+        case'booking':
+          $controller= new bookingController();
         //    if(loggedo)
-        //    $controller-> addBooking($params[1]);
+          $controller-> addBooking();
         //    else
         //    advertencia
->>>>>>> bf62ccc8cfe1160f9a067acce6ae27633f15608e
         //case 'user':
         //    $controller = new usarioController();
           //  $controller->user($params[1]);
-            //break;
+        break;
         case 'login':
             $controller = new AuthController();
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -58,15 +41,6 @@ require_once 'app/controller/userController.php';
               $controller->showLogin();
             }
             break;
-        //case 'logout':
-            //$controller = new AuthController();
-            //$controller->logout();
-            //break;
-        //case 'logout':
-          //  $controller = new usuarioController();
-            //$controller->logout();
-            //break;
-
         default: 
             echo "404 Page Not Found"; // deberiamos llamar a un controlador que maneje esto
             break;

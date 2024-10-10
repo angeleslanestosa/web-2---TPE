@@ -19,6 +19,7 @@ class userController{
             $email= $_POST['email'];
             $preferences= $_POST['preferences'];
             $this->model->insertUser($name,$lastName,$dni,$email,$preferences);
+            $this->view->showRegister(); 
         }
     }
 }
