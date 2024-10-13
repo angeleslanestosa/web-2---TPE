@@ -1,12 +1,12 @@
 <?php 
-require_once 'app/controller/bookingController.php';
-require_once 'app/controller/authController.php';
-require_once 'app/controller/userController.php';    
+require_once 'app/controller/BookingController.php';
+require_once 'app/controller/AuthController.php';
+require_once 'app/controller/UserController.php';    
 
     // base_url para redirecciones y base tag
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
     
-    $action = 'Home'; 
+    $action = 'home'; 
     if (!empty( $_GET['action'])) {
         $action = $_GET['action'];
     }
@@ -15,24 +15,28 @@ require_once 'app/controller/userController.php';
     $params = explode('/', $action);
     
     switch ($params[0]) {
-        case 'Home':
+        case 'home':
           $controller = new BookingController();
           $controller->showHome();                                                                                   
           break;
-        case 'registrarse':
-          $controller= new userController();
+        case 'register':
+          $controller= new UserController();
           $controller->showRegister();
           break;
         case'booking':
-          $controller= new bookingController();
-        //    if(loggedo)
-          $controller-> addBooking();
-        //    else
-        //    advertencia
-        //case 'user':
-        //    $controller = new usarioController();
-          //  $controller->user($params[1]);
-        break;
+          $controller= new BookingController();
+          if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $controller-> addBooking();
+          }else{
+            $controller->addBooking();
+          }
+          break;
+        case 'deleteBooking':
+          if(isset($params[1])){
+            $controller = new BookingController();
+            $controller->deleteBooking($params[1]);
+          }
+          break;
         case 'login':
             $controller = new AuthController();
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -41,6 +45,10 @@ require_once 'app/controller/userController.php';
               $controller->showLogin();
             }
             break;
+        case 'logout':
+          $controller = new AuthController();
+          $controller->logout();
+          
         default: 
             echo "404 Page Not Found"; // deberiamos llamar a un controlador que maneje esto
             break;

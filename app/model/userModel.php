@@ -7,21 +7,21 @@
             return $db;
         }
     
-        function getUser($nombre) {    
+        function getUser($name) {    
             $db = $this->getConnection();
-            $query = $db->prepare("SELECT * FROM usuario WHERE nombre = ?");
-            $query->execute([$nombre]);
+            $query = $db->prepare("SELECT * FROM usuario WHERE name = ?");
+            $query->execute([$name]);
         
-            $user = $query->fetch(PDO::FETCH_OBJ);
-        
-            return $user;
+            return $query->fetch(PDO::FETCH_OBJ);
+
         }
 
-        public function insertUser($name,$lastName,$dni,$email,$preferences){
+        public function insertUser($name, $lastname, $dni, $email, $hashedPassword, $preferences){
             $db= $this->getConnection();
-            $query= $db->prepare("INSERT INTO usuario(NOMBRE, APELLIDO,DNI, EMAIL,PREFERENCIAS) VALUES(?,?,?,?,?)");
-            $query->execute([$name,$lastName,$dni,$email,$preferences]);
+            $query= $db->prepare("INSERT INTO usuario(name, lastname, dni, email, password, preferences) VALUES(?,?,?,?,?,?)");
+            $query->execute([$name, $lastname, $dni, $email,$hashedPassword, $preferences]);
         }
 
 }
+    
     

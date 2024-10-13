@@ -1,5 +1,5 @@
 <?php
-require_once 'app/controller/bookingController.php';
+require_once 'app/controller/BookingController.php';
 require_once 'templates/header.phtml';
 ?>
 

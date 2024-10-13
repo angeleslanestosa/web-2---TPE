@@ -1,13 +1,13 @@
 <?php require_once 'templates/header.phtml'?>
     <h1>Registrate</h1>
-    <form action="registrarse" method="POST">
+    <form action="register" method="POST">
     <div class="mb-3">
         <label for="name">Ingrese nombre </label>
         <input type="text" name="name" require>
     </div>
     <div class="mb-3">
-        <label for="lastName">Ingrese apellido</label>
-        <input type="text" name="lastName"require>  
+        <label for="lastname">Ingrese apellido</label>
+        <input type="text" name="lastname"require>  
     </div>
     <div class="mb-3">
         <label for="dni">Ingrese dni</label>
@@ -24,11 +24,11 @@
     <div class="mb-3">
         <label for="preferences">Preferencias</label>
         <select name="preferences" require>
-            <option value="warmWheater">Clima calido</option>
-            <option value="coldWheather">Clima frio</option>
+            <option value="clima calido">Clima calido</option>
+            <option value="clima frio">Clima frio</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    <button type="submit" class="btn btn-primary">Registrarme</button>
     </form>
 
 <?php require_once 'templates/footer.phtml'?>

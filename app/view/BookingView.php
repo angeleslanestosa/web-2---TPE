@@ -5,12 +5,17 @@ class BookingView{
     
     function showBookings($reservas){
         foreach($reservas as $reserva){
-            echo $reserva->DESTINO;
+            echo $reserva->destination;
         }
     }
 
-    function showFormBookin(){
+    function showFormBooking(){
         require_once 'templates/formBooking.phtml';
     }
+
+    function showMessage($message){
+        echo "<p>$message</p>";
+    }
+
 
 }

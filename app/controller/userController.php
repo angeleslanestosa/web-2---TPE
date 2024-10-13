@@ -1,6 +1,6 @@
 <?php
-require_once 'app/model/userModel.php';
-require_once 'app/view/userView.php';
+require_once 'app/model/UserModel.php';
+require_once 'app/view/UserView.php';
 class userController{
     private $model;
     private $view;
@@ -11,15 +11,32 @@ class userController{
     }
 
     public function showRegister(){
-        $this->view->showRegister();
-        if(isset( $_POST['name'])){
-            $name= $_POST['name'];
-            $lastName= $_POST['lastName'];
-            $dni= $_POST['dni'];
-            $email= $_POST['email'];
-            $preferences= $_POST['preferences'];
-            $this->model->insertUser($name,$lastName,$dni,$email,$preferences);
-            $this->view->showRegister(); 
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $name = $_POST['name'];
+            $lastname = $_POST['lastname'];
+            $dni = $_POST['dni'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $preferences = $_POST['preferences'];
+
+            if(empty($name) || empty($lastname) || (empty($dni)) || empty($email) || empty($password) || empty($preferences)){
+                return $this->view->showRegister("Por favor complete todos los campos requeridos");
+            }
+
+            //encriptar la contraseña antes de enviar a model
+
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            if($this->model->insertUser($name, $lastname, $dni, $email, $hashedPassword, $preferences)){
+                return $this->view->showRegister("Usuario registrado con éxito");
+            }else{
+                return $this->view->showRegister("Error al registrar usuario");
+            }
         }
+
+        return $this->view->showRegister();
+
+
+
     }
 }
