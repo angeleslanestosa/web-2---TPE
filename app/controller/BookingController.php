@@ -13,19 +13,9 @@ class BookingController{
         
     }
 
-    function showHome(){
-        $res = new stdClass();
-        sessionAuth($res);
-        if(!isset($$res->user)){
-            $reservas=$this->model->getBookings();
-            $this->view->showBookings($reservas);
-        }else{
-            echo "no autorizado";
-        }
-        
-       
-       
-    } 
+    function showHome() {
+        $this->view->showHome();
+    }
     
     //añadir una reserva
     function addBooking(){

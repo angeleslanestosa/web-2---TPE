@@ -8,7 +8,6 @@ class AuthController{
     private $view;
 
     public function __construct() {
-        session_start();
         $this->model = new UserModel();
         $this->view = new AuthView();
     }
@@ -36,21 +35,20 @@ class AuthController{
 
         $userFromDb = $this->model->getUser($name);
         
-        if($userFromDb){
-            if(password_verify($password, $userFromDb->password)){
+        if($userFromDb && password_verify($password, $userFromDb->password)){
+            session_start();
                 // Guardo en la sesión el ID del usuario
-                $_SESSION['ID_USUARIO'] = $userFromDb->ID_USUARIO;
-                $_SESSION['NOMBRE'] = $userFromDb->name;
-                $_SESSION['LAST_ACTIVITY'] = time();
-                var_dump($_SESSION);
-                header('Location: ' . BASE_URL . 'home'); // Asegúrate de redirigir correctamente
-                exit();
-            } else {
-                return $this->view->showLogin('Nombre de usuario o contraseña incorrectos'); // Corregido aquí
-            }
-    
-            }
+            $_SESSION['ID_USUARIO'] = $userFromDb->ID_USUARIO;
+            $_SESSION['name'] = $userFromDb->name;
+            $_SESSION['LAST_ACTIVITY'] = time();
+            header('Location: ' . BASE_URL . 'home'); // Asegúrate de redirigir correctamente
+            exit();
+        } else {
+            return $this->view->showLogin('Nombre de usuario o contraseña incorrectos'); // Corregido aquí
         }
+    
+            
+    }
 
       
 

@@ -1,6 +1,7 @@
 <?php
 require_once 'app/controller/BookingController.php';
 
+
 class BookingView{
     
     function showBookings($reservas){
@@ -15,6 +16,10 @@ class BookingView{
 
     function showMessage($message){
         echo "<p>$message</p>";
+    }
+
+    function showHome(){
+        require_once "app/view/HomeView.php";
     }
 
 

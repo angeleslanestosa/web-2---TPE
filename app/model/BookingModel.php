@@ -9,7 +9,7 @@ class BookingModel{
 
     public function getBookings(){
         $db = $this->getConnection();
-        $query= $db->prepare('SELECT * from reserva');
+        $query= $db->prepare ('SELECT * from reserva');
         $query -> execute();
         $reservas= $query-> fetchAll(PDO::FETCH_OBJ);
         return $reservas;

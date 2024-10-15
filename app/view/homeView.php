@@ -29,7 +29,7 @@ require_once 'templates/header.phtml';
         <div class="text-center text-white">
             <h1>Bienvenido a TripScript</h1>
             <p>Gestiona tus reservas hoteleras fácilmente.</p>
-            <a href="#" class="btn btn-primary">Reservá ahora</a>
+            <a href="http://localhost/WEB-2---TPE/booking" class="btn btn-primary">Reservá ahora</a>
         </div>
     </div>
 
