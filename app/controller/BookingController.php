@@ -21,12 +21,11 @@ class BookingController{
     function addBooking(){
         session_start();
         $this->view->showFormBooking();
-        if(isset ($_POST['destination'])){
-            var_dump($_SESSION);
-            $destination= $_POST['destination'];
-            $housing= $_POST['housing'];
-            $checkin= $_POST['checkin'];
-            $checkout= $_POST['checkout'];
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $destination = $_POST['destination'];
+            $housing = $_POST['housing'];
+            $checkin = $_POST['checkin'];
+            $checkout = $_POST['checkout'];
 
             if(isset($_SESSION['ID_USUARIO'])){
                 $userId = $_SESSION['ID_USUARIO'];
@@ -37,8 +36,6 @@ class BookingController{
                 $this->view->showMessage("Usuario no registrado");
                 $this->view->showFormBooking();
             }
-        }else{
-            $this->view->showFormBooking();
         }
     }
 

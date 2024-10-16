@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2024 a las 23:29:34
+-- Tiempo de generación: 17-10-2024 a las 01:13:20
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `sistemadereservas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `destination`
+--
+
+CREATE TABLE `destination` (
+  `ID-DESTINATION` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `attractions` varchar(100) NOT NULL,
+  `season` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -67,6 +81,12 @@ INSERT INTO `usuario` (`ID-USUARIO`, `name`, `lastname`, `dni`, `email`, `passwo
 --
 
 --
+-- Indices de la tabla `destination`
+--
+ALTER TABLE `destination`
+  ADD PRIMARY KEY (`ID-DESTINATION`);
+
+--
 -- Indices de la tabla `reserva`
 --
 ALTER TABLE `reserva`
@@ -82,6 +102,12 @@ ALTER TABLE `usuario`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `destination`
+--
+ALTER TABLE `destination`
+  MODIFY `ID-DESTINATION` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva`
