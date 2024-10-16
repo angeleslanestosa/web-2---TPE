@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-09-2024 a las 01:22:18
+-- Tiempo de generación: 16-10-2024 a las 23:29:34
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -29,20 +29,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `reserva` (
   `ID-RESERVA` int(11) NOT NULL,
-  `DESTINO` varchar(20) NOT NULL,
-  `ALOJAMIENTO` varchar(30) NOT NULL,
-  `CHECK-IN` date NOT NULL,
-  `CHECK-OUT` date NOT NULL,
+  `destination` varchar(20) DEFAULT NULL,
+  `housing` varchar(30) DEFAULT NULL,
+  `checkin` date DEFAULT NULL,
+  `checkout` date DEFAULT NULL,
   `ID-USUARIO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `reserva`
---
-
-INSERT INTO `reserva` (`ID-RESERVA`, `DESTINO`, `ALOJAMIENTO`, `CHECK-IN`, `CHECK-OUT`, `ID-USUARIO`) VALUES
-(2, 'miami', 'Fairwind', '2024-11-07', '2024-11-22', 1),
-(3, 'atenas', 'Royalty hotel', '2024-11-22', '2024-11-30', 2);
 
 -- --------------------------------------------------------
 
@@ -52,20 +44,23 @@ INSERT INTO `reserva` (`ID-RESERVA`, `DESTINO`, `ALOJAMIENTO`, `CHECK-IN`, `CHEC
 
 CREATE TABLE `usuario` (
   `ID-USUARIO` int(11) NOT NULL,
-  `NOMBRE` varchar(20) NOT NULL,
-  `APELLIDO` varchar(20) NOT NULL,
-  `DNI` int(10) NOT NULL,
-  `EMAIL` varchar(40) NOT NULL,
-  `PREFERENCIAS` varchar(40) NOT NULL
+  `name` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `dni` int(40) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `preferences` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`ID-USUARIO`, `NOMBRE`, `APELLIDO`, `DNI`, `EMAIL`, `PREFERENCIAS`) VALUES
-(1, 'Angeles', 'Lanestosa', 43659131, 'angeleslanestosa@gmail.com', 'clima calido '),
-(2, 'Candela ', 'Karaman', 45460395, 'candelakaraman@gmail.com', 'clima calido');
+INSERT INTO `usuario` (`ID-USUARIO`, `name`, `lastname`, `dni`, `email`, `password`, `preferences`) VALUES
+(11, 'Tobias', 'Romano', 43216947, 'tobiasromano151@gmail.com', '$2y$10$Jy992R/r66gd.zliy/ETEueHS1NQ0iWDVsRCZgz944CgVTOqFPORG', 'clima calido'),
+(13, 'Angeles', 'Lanestosa', 43659131, 'angeleslanestosa@gmail.com', '$2y$10$db4/4Phvr1ynlFBu/nrmx./tyyb7x9RohXS.9M/drr67HQRvTQwJ.', 'clima calido'),
+(14, 'Candela', 'Karaman', 45460395, 'candelakaraman@gmail.com', '$2y$10$RuL5v0nGPCoKr8P1gV8J2uAidg6OFphXYurJe9Xo8iyAVIw7xLt2e', 'clima calido'),
+(15, 'webadmin', 'web', 1111, 'webadmin@gmail.com', '$2y$10$5m3l/Sftk8JIc4rS/dO0ye0gqsn48l8W7Qdg.892/PCRbErsO7bcy', 'clima frio');
 
 --
 -- Índices para tablas volcadas
@@ -92,13 +87,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `ID-RESERVA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID-RESERVA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `ID-USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID-USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas

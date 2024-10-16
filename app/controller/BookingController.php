@@ -34,7 +34,7 @@ class BookingController{
                 header('Location: ' .BASE_URL. 'home');
                 exit();
             }else{
-                $this->view->showMessage("Usuario no autenticado");
+                $this->view->showMessage("Usuario no registrado");
                 $this->view->showFormBooking();
             }
         }else{
