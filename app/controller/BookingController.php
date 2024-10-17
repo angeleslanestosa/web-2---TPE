@@ -5,12 +5,12 @@ require_once 'app/view/BookingView.php';
 class BookingController{
     private $model;
     private $view;
+    private $res;
 
-    public function __construct() {
+    public function __construct($res) {
         $this->model= new BookingModel();
         $this->view= new BookingView();
-
-        
+        $this->res= $res;    
     }
 
     function showHome() {
@@ -19,28 +19,32 @@ class BookingController{
     
     //añadir una reserva
     function addBooking(){
-        session_start();
+        if(session_start()){
         $this->view->showFormBooking();
-        if(isset ($_POST['destination'])){
-            var_dump($_SESSION);
-            $destination= $_POST['destination'];
-            $housing= $_POST['housing'];
-            $checkin= $_POST['checkin'];
-            $checkout= $_POST['checkout'];
 
-            if(isset($_SESSION['ID_USUARIO'])){
-                $userId = $_SESSION['ID_USUARIO'];
-                $this->model->insertBooking($userId, $destination, $housing, $checkin, $checkout);
-                header('Location: ' .BASE_URL. 'home');
-                exit();
-            }else{
-                $this->view->showMessage("Usuario no autenticado");
-                $this->view->showFormBooking();
-            }
-        }else{
-            $this->view->showFormBooking();
+        if (!isset($_POST['destination']) || empty($_POST['destination'])) {
+            return $this->view->showMessage('Falta completar el destino');
+        }
+        
+        if (!isset($_POST['housin']) || empty($_POST['housing'])) {
+            return $this->view->showMessage('Falta completar alojamiento');
+        }
+        
+        $userId= $this->res->user->id;
+        $destination = $_POST['destination'];
+        $housing = $_POST['housing'];
+        $checkin = $_POST['checkin'];
+        $checkout = $_POST['checkout'];
+        
+        $id = $this->model->insertBooking($destination, $housing, $checkin,$checkout,$userId);
+        
+        // redirijo al home (también podriamos usar un método de una vista para motrar un mensaje de éxito)
+        header('Location: ' . BASE_URL, 'home');
+
         }
     }
+    
+    
 
     //eliminar una reserva
     function deleteBooking($bookingId){
@@ -52,6 +56,11 @@ class BookingController{
         header ('Location: ' .BASE_URL. 'home');
         exit();
 
+    }
+
+    function showBookin(){
+        $bookin= $this->model->getBookings();
+       // $this->model->showBookin($bookin);
     }
 }
 

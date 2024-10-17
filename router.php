@@ -4,6 +4,7 @@ require_once 'app/controller/AuthController.php';
 require_once 'app/controller/UserController.php';   
 require_once 'app/middleWare/sessionAuth.php';
 require_once 'librerias/Response.php';
+//require_once 'app/middleWare/verifyAuth.php';
 
     // base_url para redirecciones y base tag
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -20,22 +21,24 @@ require_once 'librerias/Response.php';
     
     switch ($params[0]) {
         case 'home':
-          $controller = new BookingController();
+          $controller = new BookingController($res);
           $controller->showHome();                                                                                   
           break;
         case 'register':
           $controller= new UserController();
           $controller->showRegister();
           break;
+        
         case'booking':
           //sessionAuth($res);
-          $controller= new BookingController();
+          //verifyAuth($res);
+          $controller= new BookingController($res);
           $controller-> addBooking();
         break;
         case 'deleteBooking':
           sessionAuth($res);
           if(isset($params[1])){
-            $controller = new BookingController();
+            $controller = new BookingController($res);
             $controller->deleteBooking($params[1]);
           }
           break;
@@ -51,7 +54,11 @@ require_once 'librerias/Response.php';
           sessionAuth($res);
           $controller = new AuthController();
           $controller->logout();
-          
+        break;
+        //case'user'
+        //  sessionAuth($res);
+        //  $controller= new BookingController;
+        //  $controler-> showBookin(); 
         default: 
             echo "404 Page Not Found"; // deberiamos llamar a un controlador que maneje esto
             break;
