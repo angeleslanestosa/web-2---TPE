@@ -9,7 +9,7 @@ class BookingModel{
 
     public function getBookings(){
         $db = $this->getConnection();
-        $query= $db->prepare ('SELECT * from reserva');
+        $query= $db->prepare ('SELECT * FROM reserva');
         $query -> execute();
         $reservas= $query-> fetchAll(PDO::FETCH_OBJ);
         return $reservas;
@@ -17,7 +17,7 @@ class BookingModel{
 
     public function insertBooking($userId, $destination, $housing, $chekin, $chekout){
         $db= $this->getConnection();
-        $query= $db-> prepare('INSERT INTO reserva(ID_USUARIO, destination, housing, checkin, checkout) VALUES(?,?,?,?,?)');
+        $query= $db-> prepare('INSERT INTO reserva (ID_USUARIO, destination, housing, checkin, checkout) VALUES(?, ?, ?, ?, ?)');
         $query-> execute([$userId,$destination,$housing,$chekin,$chekout]);
     }
 

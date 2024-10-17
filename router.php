@@ -4,7 +4,7 @@ require_once 'app/controller/AuthController.php';
 require_once 'app/controller/UserController.php';   
 require_once 'app/middleWare/sessionAuth.php';
 require_once 'librerias/Response.php';
-//require_once 'app/middleWare/verifyAuth.php';
+require_once 'app/controller/DestinationController.php';
 
     // base_url para redirecciones y base tag
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
