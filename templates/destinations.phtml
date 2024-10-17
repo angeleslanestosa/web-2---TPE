@@ -1,0 +1,83 @@
+<?php
+require_once 'templates/header.phtml';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinos Populares</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container py-5">
+    <h2 class="text-center mb-4">DESTINOS POPULARES</h2>
+    <div class="row">
+        <?php
+        $destinos = [
+            [
+                "id" => 1,
+                "nombre" => "París",
+                "descripcion" => "La Ciudad de la Luz, famosa por la Torre Eiffel y el Louvre.",
+                "imagen" => "images/paris.jpg"
+            ],
+            [
+                "id" => 2,
+                "nombre" => "Tokio",
+                "descripcion" => "Metrópolis vibrante que mezcla lo moderno con lo tradicional.",
+                "imagen" => "images/tokio.jpg"
+            ],
+            [
+                "id" => 3,
+                "nombre" => "Nueva York",
+                "descripcion" => "La Gran Manzana, hogar de rascacielos y cultura diversa.",
+                "imagen" => "images/newYork.jpg"
+            ],
+            [
+                "id" => 4,
+                "nombre" => "Roma",
+                "descripcion" => "Ciudad eterna con historia milenaria y deliciosa gastronomía.",
+                "imagen" => "images/roma.jpg"
+            ],
+            [
+                "id" => 5,
+                "nombre" => "Bali",
+                "descripcion" => "Paraíso tropical con playas hermosas y rica cultura.",
+                "imagen" => "images/bali.jpg"
+            ],
+            [
+                "id" => 6,
+                "nombre" => "Sídney",
+                "descripcion" => "Ciudad costera con icónica ópera y hermosas playas.",
+                "imagen" => "images/sidney.jpg"
+            ]
+        ];
+
+        foreach ($destinos as $destino) {
+            ?>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="<?php echo $destino['imagen']; ?>" class="card-img-top" alt="<?php echo $destino['nombre']; ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $destino['nombre']; ?></h5>
+                        <p class="card-text"><?php echo $destino['descripcion']; ?></p>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<?php
+require_once 'templates/footer.phtml';
+?>
