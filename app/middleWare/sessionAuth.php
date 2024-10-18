@@ -2,9 +2,9 @@
     
     function sessionAuth($res) {
         session_start();
-        if(isset($_SESSION['ID_USUARIO'])){
+        if(isset($_SESSION['IDUSUARIO'])){
             $res->user = new stdClass();
-            $res->user->id = $_SESSION['ID_USUARIO'];
+            $res->user->id = $_SESSION['IDUSUARIO'];
             $res->user->name = $_SESSION['name'];
 
         } else {
