@@ -23,12 +23,10 @@ class BookingModel{
 
     public function removeBooking($bookingId){
         $db = $this->getConnection();
-        $query = $db->prepare('DELETE FROM reserva WHERE ID_RESERVA = ?');
+        $query = $db->prepare('DELETE FROM reserva WHERE IDRESERVA = ?');
         return $query->execute(([$bookingId]));
     }
 
-    public function Cositas($userId, $destination){
-        echo $userId+ $destination;
-    }
+    
 
 }
