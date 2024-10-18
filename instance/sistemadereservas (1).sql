@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2024 a las 01:13:20
+-- Tiempo de generación: 18-10-2024 a las 21:45:36
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `destination` (
-  `ID-DESTINATION` int(11) NOT NULL,
+  `IDDESTINATION` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `description` varchar(200) NOT NULL,
   `attractions` varchar(100) NOT NULL,
@@ -42,12 +42,12 @@ CREATE TABLE `destination` (
 --
 
 CREATE TABLE `reserva` (
-  `ID-RESERVA` int(11) NOT NULL,
+  `IDRESERVA` int(11) NOT NULL,
   `destination` varchar(20) DEFAULT NULL,
   `housing` varchar(30) DEFAULT NULL,
   `checkin` date DEFAULT NULL,
   `checkout` date DEFAULT NULL,
-  `ID-USUARIO` int(11) NOT NULL
+  `IDUSUARIO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -57,7 +57,7 @@ CREATE TABLE `reserva` (
 --
 
 CREATE TABLE `usuario` (
-  `ID-USUARIO` int(11) NOT NULL,
+  `IDUSUARIO` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
   `dni` int(40) DEFAULT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`ID-USUARIO`, `name`, `lastname`, `dni`, `email`, `password`, `preferences`) VALUES
+INSERT INTO `usuario` (`IDUSUARIO`, `name`, `lastname`, `dni`, `email`, `password`, `preferences`) VALUES
 (11, 'Tobias', 'Romano', 43216947, 'tobiasromano151@gmail.com', '$2y$10$Jy992R/r66gd.zliy/ETEueHS1NQ0iWDVsRCZgz944CgVTOqFPORG', 'clima calido'),
 (13, 'Angeles', 'Lanestosa', 43659131, 'angeleslanestosa@gmail.com', '$2y$10$db4/4Phvr1ynlFBu/nrmx./tyyb7x9RohXS.9M/drr67HQRvTQwJ.', 'clima calido'),
 (14, 'Candela', 'Karaman', 45460395, 'candelakaraman@gmail.com', '$2y$10$RuL5v0nGPCoKr8P1gV8J2uAidg6OFphXYurJe9Xo8iyAVIw7xLt2e', 'clima calido'),
@@ -84,20 +84,20 @@ INSERT INTO `usuario` (`ID-USUARIO`, `name`, `lastname`, `dni`, `email`, `passwo
 -- Indices de la tabla `destination`
 --
 ALTER TABLE `destination`
-  ADD PRIMARY KEY (`ID-DESTINATION`);
+  ADD PRIMARY KEY (`IDDESTINATION`);
 
 --
 -- Indices de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  ADD PRIMARY KEY (`ID-RESERVA`),
-  ADD KEY `ID-USUARIO` (`ID-USUARIO`);
+  ADD PRIMARY KEY (`IDRESERVA`),
+  ADD KEY `ID-USUARIO` (`IDUSUARIO`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`ID-USUARIO`);
+  ADD PRIMARY KEY (`IDUSUARIO`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -107,19 +107,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `destination`
 --
 ALTER TABLE `destination`
-  MODIFY `ID-DESTINATION` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDDESTINATION` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `ID-RESERVA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `IDRESERVA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `ID-USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `IDUSUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas
@@ -129,7 +129,7 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`ID-USUARIO`) REFERENCES `usuario` (`ID-USUARIO`);
+  ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`IDUSUARIO`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

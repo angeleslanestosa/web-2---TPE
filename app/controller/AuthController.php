@@ -14,7 +14,7 @@ class AuthController{
 
     function showLogin(){
         // Si el usuario ya esta logueado, redirigimos al home
-        if (isset($_SESSION['ID_USUARIO'])) {
+        if (isset($_SESSION['IDUSUARIO'])) {
             header('Location: ' . BASE_URL . 'home');
             exit();
         }
@@ -35,10 +35,10 @@ class AuthController{
 
         $userFromDb = $this->model->getUser($name);
         
-        if ($userFromDb && password_verify($password, $userFromDb->password)) {
-        
-        
-            $_SESSION['ID_USUARIO'] = $userFromDb->IDUSUARIO;
+        if($userFromDb && password_verify($password, $userFromDb->password)){
+            session_start();
+                // Guardo en la sesión el ID del usuario
+            $_SESSION['ID_USUARIO'] = $userFromDb->ID_USUARIO;
             $_SESSION['name'] = $userFromDb->name;
             $_SESSION['LAST_ACTIVITY'] = time();
         
@@ -51,12 +51,12 @@ class AuthController{
             
     }
 
-      
-
     function logout() {
          session_destroy(); // Borra la cookie que se busco
          header('Location: ' . BASE_URL . 'home');
          exit();
     }
+
+
     
 }

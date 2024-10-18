@@ -12,6 +12,10 @@
         public function getUser($name) {;
             $query =$this->db->prepare("SELECT * FROM usuario WHERE name = ?");
             $query->execute([$name]);
+        
+            $user = $query->fetch(PDO::FETCH_OBJ);
+        
+            return $user;
             return $query->fetch(PDO::FETCH_OBJ); 
         }
 
@@ -21,6 +25,11 @@
             $query->execute([$name, $lastname, $dni, $email,$hashedPassword, $preferences]);
         }
 
-}
-    
+        public function deleteUser($IDUSUARIO) {
+
+            $query =$this->db->prepare('DELETE FROM usuario WHERE IDUSUARIO = ?');
+            return $query->execute([$IDUSUARIO]); 
+        }
+
+    }
     

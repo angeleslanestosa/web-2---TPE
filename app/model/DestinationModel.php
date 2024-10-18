@@ -17,7 +17,7 @@ class DestinationModel{
 
     public function insertDestination($name, $description, $attractions, $season){
         $db = $this->getConnection();
-        $query = $this->$db->prepare('INSERT INTO destination(name, description, attractions, season');
+        $query = $this->$db->prepare("INSERT INTO destination(name, description, attractions, season) VALUES (?, ?, ?, ?)");
         return $query->execute([$name, $description, $attractions, $season]);
     }
 

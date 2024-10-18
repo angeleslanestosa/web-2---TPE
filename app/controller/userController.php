@@ -35,8 +35,10 @@ class userController{
         }
 
         return $this->view->showRegister();
+        
 
 
 
     }
+
 }

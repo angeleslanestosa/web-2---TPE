@@ -57,7 +57,7 @@ class BookingController{
 
     }
 
-    function showBookin(){
+    function showBooking(){
         $bookin= $this->model->getBookings();
        // $this->model->showBookin($bookin);
     }

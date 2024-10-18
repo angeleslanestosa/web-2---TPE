@@ -1,20 +1,24 @@
 <?php require_once 'templates/header.phtml'?>
-<form action="booking" method="POST">
+
+
+<form action="booking" method="POST" class="m-5">
+    <h2>Realizá tu reserva</h2>
+    
     <div class="mb-3">
         <label for="destination">Ingrese destino</label>
-        <input type="text" name="destination" >
+        <input type="text" name="destination" required>
     </div>
     <div class="mb-3">
         <label for="housing">Ingrese alojamiento</label>
-        <input type="text" name="housing" >
+        <input type="text" name="housing" required >
     </div>
     <div class="mb-3">
         <label for="checkin">Ingrese fecha de chek-in</label>
-        <input type="date" name="checkin">
+        <input type="date" name="checkin" required>
     </div>
     <div class="mb-3">
-        <label for="checkout">Ingree fecha de check-out</label>
-        <input type="date" name="checkout">
+        <label for="checkout">Ingrese fecha de check-out</label>
+        <input type="date" name="checkout" required>
     </div>
     <button type="submit" class="btn btn-primary">Agregar reserva</button>
 </form>
