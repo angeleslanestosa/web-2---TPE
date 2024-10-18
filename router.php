@@ -20,48 +20,57 @@ require_once 'app/controller/DestinationController.php';
     $params = explode('/', $action);
     
     switch ($params[0]) {
-        case 'home':
+      case 'home':
+        $controller = new BookingController($res);
+        $controller->showHome();                                                                                   
+        break;
+      case 'register':
+        $controller= new UserController();
+        $controller->showRegister();
+        break;
+      
+      case'booking':
+        //sessionAuth($res);
+        //verifyAuth($res);
+        $controller= new BookingController($res);
+        $controller-> addBooking();
+      break;
+      case 'deleteBooking':
+        sessionAuth($res);
+        if(isset($params[1])){
           $controller = new BookingController($res);
-          $controller->showHome();                                                                                   
-          break;
-        case 'register':
-          $controller= new UserController();
-          $controller->showRegister();
-          break;
-        
-        case'booking':
-          //sessionAuth($res);
-          //verifyAuth($res);
-          $controller= new BookingController($res);
-          $controller-> addBooking();
+          $controller->deleteBooking($params[1]);
+        }
         break;
-        case 'deleteBooking':
-          sessionAuth($res);
-          if(isset($params[1])){
-            $controller = new BookingController($res);
-            $controller->deleteBooking($params[1]);
-          }
-          break;
-        case 'login':
-            $controller = new AuthController();
-          if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controller->login();
-          }else{
-             $controller->showLogin();
-          }
-          break;
-        case 'logout':
-          sessionAuth($res);
+      case 'login':
           $controller = new AuthController();
-          $controller->logout();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          $controller->login();
+        }else{
+            $controller->showLogin();
+        }
         break;
-        //case'user'
-        //  sessionAuth($res);
-        //  $controller= new BookingController;
-        //  $controler-> showBookin(); 
-        default: 
-            echo "404 Page Not Found"; // deberiamos llamar a un controlador que maneje esto
-            break;
-        
+      case 'logout':
+        sessionAuth($res);
+        $controller = new AuthController();
+        $controller->logout();
+      break;
+      //case'user'
+      //sessionAuth($res);
+        //$controller= new BookingController;
+        //$controler-> showBookin();
+      //break;
+      case 'destinations':
+        $controller = new DestinationController();
+        $controller->showDestinations();
+        break; 
+      case 'addDestination': 
+        $controller = new DestinationController();
+        $controller->addDestination();
+        break;
+      default:
+        echo "404 Page Not Found"; // deberiamos llamar a un controlador que maneje esto
+      break;
+
     }
     

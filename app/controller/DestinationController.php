@@ -39,4 +39,9 @@ Class DestinationController{
             $this->view->showDestinations($destinations);
         }
     }
+
+    public function addDestination(){
+        $this->view->showFormDestination();
+        //$this->controller->addDestination();
+    }
 }
