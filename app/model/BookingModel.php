@@ -15,16 +15,20 @@ class BookingModel{
         return $reservas;
     }
 
-    public function insertBooking($userId, $destination, $housing, $chekin, $chekout){
+    public function insertBooking( $destination, $housing, $chekin, $chekout,$userId){
         $db= $this->getConnection();
-        $query= $db-> prepare('INSERT INTO reserva (ID_USUARIO, destination, housing, checkin, checkout) VALUES(?, ?, ?, ?, ?)');
-        $query-> execute([$userId,$destination,$housing,$chekin,$chekout]);
+        $query= $db-> prepare('INSERT INTO reserva ( destination, housing, checkin, checkout,IDUSUARIO) VALUES(?, ?, ?, ?, ?)');
+        $query-> execute([$destination,$housing,$chekin,$chekout,$userId]);
     }
 
     public function removeBooking($bookingId){
         $db = $this->getConnection();
         $query = $db->prepare('DELETE FROM reserva WHERE ID_RESERVA = ?');
         return $query->execute(([$bookingId]));
+    }
+
+    public function Cositas($userId, $destination){
+        echo $userId+ $destination;
     }
 
 }

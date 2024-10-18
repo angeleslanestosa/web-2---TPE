@@ -4,6 +4,7 @@ class UserView{
         require_once 'templates/formRegister.phtml';
     }
 
+    
 
 
 }

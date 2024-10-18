@@ -19,14 +19,13 @@ class BookingController{
     
     //añadir una reserva
     function addBooking(){
-        if(session_start()){
         $this->view->showFormBooking();
 
         if (!isset($_POST['destination']) || empty($_POST['destination'])) {
             return $this->view->showMessage('Falta completar el destino');
         }
         
-        if (!isset($_POST['housin']) || empty($_POST['housing'])) {
+        if (!isset($_POST['housing']) || empty($_POST['housing'])) {
             return $this->view->showMessage('Falta completar alojamiento');
         }
         
@@ -36,12 +35,12 @@ class BookingController{
         $checkin = $_POST['checkin'];
         $checkout = $_POST['checkout'];
         
-        $id = $this->model->insertBooking($destination, $housing, $checkin,$checkout,$userId);
-        
-        // redirijo al home (también podriamos usar un método de una vista para motrar un mensaje de éxito)
-        header('Location: ' . BASE_URL, 'home');
-
+        if($this->model->insertBooking($destination, $housing, $checkin,$checkout,$userId)){
+            return $this->view->showMessage("Reserva exitosa");
+        } else{
+            return  $this->view->showMessage("Error al registrar la reserva");
         }
+            
     }
     
     
@@ -62,6 +61,12 @@ class BookingController{
         $bookin= $this->model->getBookings();
        // $this->model->showBookin($bookin);
     }
+
+    
+    //public function showUserPage(){
+    //    $this->view->showUserPage();
+    //}
+
 }
 
    

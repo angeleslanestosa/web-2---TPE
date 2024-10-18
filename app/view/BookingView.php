@@ -22,5 +22,10 @@ class BookingView{
         require_once "app/view/HomeView.php";
     }
 
+    public function showUserPage(){
+        require_once "templates/userPage.phtml";
+    }
+
+
 
 }

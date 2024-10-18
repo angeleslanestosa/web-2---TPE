@@ -35,16 +35,17 @@ class AuthController{
 
         $userFromDb = $this->model->getUser($name);
         
-        if($userFromDb && password_verify($password, $userFromDb->password)){
-            session_start();
-                // Guardo en la sesión el ID del usuario
-            $_SESSION['ID_USUARIO'] = $userFromDb->ID_USUARIO;
+        if ($userFromDb && password_verify($password, $userFromDb->password)) {
+        
+        
+            $_SESSION['ID_USUARIO'] = $userFromDb->IDUSUARIO;
             $_SESSION['name'] = $userFromDb->name;
             $_SESSION['LAST_ACTIVITY'] = time();
-            header('Location: ' . BASE_URL . 'home'); // Asegúrate de redirigir correctamente
+        
+            header('Location: ' . BASE_URL . 'home');
             exit();
         } else {
-            return $this->view->showLogin('Nombre de usuario o contraseña incorrectos'); // Corregido aquí
+            return $this->view->showLogin('Nombre de usuario o contraseña incorrectos');
         }
     
             

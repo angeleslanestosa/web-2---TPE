@@ -5,6 +5,7 @@ require_once 'app/controller/UserController.php';
 require_once 'app/middleWare/sessionAuth.php';
 require_once 'librerias/Response.php';
 require_once 'app/controller/DestinationController.php';
+require_once "config.php";
 
     // base_url para redirecciones y base tag
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -30,8 +31,8 @@ require_once 'app/controller/DestinationController.php';
         break;
       
       case'booking':
-        //sessionAuth($res);
-        //verifyAuth($res);
+        sessionAuth($res);
+        sessionAuth($res);
         $controller= new BookingController($res);
         $controller-> addBooking();
       break;
@@ -55,11 +56,11 @@ require_once 'app/controller/DestinationController.php';
         $controller = new AuthController();
         $controller->logout();
       break;
-      //case'user'
+      case'user':
       //sessionAuth($res);
-        //$controller= new BookingController;
-        //$controler-> showBookin();
-      //break;
+       // $controller= new BookingController($res);
+      //  $controller->showUserPage();
+      break;
       case 'destinations':
         $controller = new DestinationController();
         $controller->showDestinations();
