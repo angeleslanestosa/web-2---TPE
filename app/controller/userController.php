@@ -47,7 +47,6 @@ class userController{
     public function deleteAccount($IDUSUARIO) {
         // Comprueba si el ID del usuario no está vacío
         if (!empty($IDUSUARIO) && $this->model->deleteUser($IDUSUARIO)) {
-            session_start();
             session_destroy(); // Cierra la sesión
             header('Location: ' . BASE_URL . 'home'); // Redirige a la página de inicio
             exit(); // Asegúrate de que no se ejecute más código

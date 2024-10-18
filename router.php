@@ -31,7 +31,6 @@ require_once "config.php";
         break;
       
       case'booking':
-        sessionAuth($res);
         $controller= new BookingController($res);
         $controller-> addBooking();
       break;
@@ -63,11 +62,6 @@ require_once "config.php";
           $IDUSUARIO = $_POST['IDUSUARIO'];
           $controller->deleteAccount($IDUSUARIO); 
         }
-        break;
-      case'user':
-      //sessionAuth($res);
-       // $controller= new BookingController($res);
-      //  $controller->showUserPage();
       break;
       case 'destinations':
         $controller = new DestinationController();

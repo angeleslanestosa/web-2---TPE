@@ -1,7 +1,6 @@
 <?php
     
     function sessionAuth($res) {
-        session_start();
         if(isset($_SESSION['IDUSUARIO'])){
             $res->user = new stdClass();
             $res->user->id = $_SESSION['IDUSUARIO'];

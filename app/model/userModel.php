@@ -12,10 +12,6 @@
         public function getUser($name) {;
             $query =$this->db->prepare("SELECT * FROM usuario WHERE name = ?");
             $query->execute([$name]);
-        
-            $user = $query->fetch(PDO::FETCH_OBJ);
-        
-            return $user;
             return $query->fetch(PDO::FETCH_OBJ); 
         }
 
