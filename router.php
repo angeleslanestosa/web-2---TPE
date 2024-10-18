@@ -55,19 +55,24 @@ require_once 'app/controller/DestinationController.php';
         $controller = new AuthController();
         $controller->logout();
       break;
-      //case'user'
-      //sessionAuth($res);
-        //$controller= new BookingController;
-        //$controler-> showBookin();
-      //break;
+      case 'user':
+        $controller = new userController();
+        $controller->showUser(); // Mostrar información del usuario
+    
+        if (isset($_POST['action']) && $_POST['action'] === 'deleteAccount') {
+          $IDUSUARIO = $_POST['IDUSUARIO'];
+          $controller->deleteAccount($IDUSUARIO); 
+        }
+        break;
       case 'destinations':
         $controller = new DestinationController();
         $controller->showDestinations();
-        break; 
-      case 'addDestination': 
-        $controller = new DestinationController();
         $controller->addDestination();
-        break;
+        break; 
+      //case 'addDestination': 
+        //$controller = new DestinationController();
+        //$controller->addDestination();
+        //break;
       default:
         echo "404 Page Not Found"; // deberiamos llamar a un controlador que maneje esto
       break;

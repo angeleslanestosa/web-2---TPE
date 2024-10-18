@@ -16,19 +16,31 @@ require_once 'templates/header.phtml';
 </head>
 <body>
 
+   
+    <form action="login" method="POST" class="m-4">
+        <h2>Iniciar sesión</h2>
 
-    <form action="login" method="POST">
-        <label for="name">Ingrese nombre de usuario</label>
-        <input type="text" name="name" id="name" required>
+        <div class="row mb-3">
+            <div class="col-12">
+                <label for="name">Ingrese nombre de usuario</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+        </div>
 
-        <label for="password">Ingrese contraseña</label>
-        <input type="password" name="password" id="password" required>
+        <div class="row mb-3">
+            <div class="col-12">
+                <label for="password">Ingrese contraseña</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+        </div>
 
-        <button type="submit">Iniciar Sesión</button>
+        <button type="submit" class="btn btn-primary w-20">Iniciar Sesión</button>
+
+        
 
 
     </form>
-
+    
 
     
 </body>

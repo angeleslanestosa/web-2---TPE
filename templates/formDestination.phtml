@@ -1,19 +1,25 @@
-<form action="addDestination" method="get">
+<?php require_once 'templates/header.phtml'?>
+
+<div class="content">
+<form action="addDestination" method="get" class="m-4">
+<h3>Registrá un nuevo destino</h3>
+
+
 <div class="mb-3">
         <label for="name">Ingrese el nombre del destino</label>
-        <input type="text" name="nme" >
+        <input type="text" name="name" required>
     </div>
     <div class="mb-3">
-        <label for="description">Ingrese descripcion</label>
-        <input type="text" name="description" >
+        <label for="description">Ingrese descripción</label>
+        <input type="text" name="description" required>
     </div>
     <div class="mb-3">
-        <label for="attractions">Ingrese atraccionbes</label>
-        <input type="text" name="attractions">
+        <label for="attractions">Ingrese atracciones</label>
+        <input type="text" name="attractions" required>
     </div>
     <div class="mb-3">
     <label for="season">Temporada alta</label>
-        <select name="season" require>
+        <select name="season" required>
             <option value="enero">Enero</option>
             <option value="febrero">Febrero</option>
             <option value="marzo">Marzo</option>
@@ -30,4 +36,6 @@
     </div>
     <button type="submit" class="btn btn-primary">Agregar destino</button>
 </form>
-</form>
+</div>
+
+<?php require_once 'templates/footer.phtml'?>

@@ -16,7 +16,7 @@ require_once 'templates/header.phtml';
     <style>
         /* Estilos directamente en el archivo PHP usando Bootstrap */
         .bg-image {
-            background-image: url('images/img1.jpg');
+            background-image: url('images/home.jpg');
             background-size: cover;
             background-position: center;
             height: 100vh; /* 100% de la altura de la ventana */
