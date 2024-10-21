@@ -1,0 +1,36 @@
+<?php require_once 'templates/header.phtml'?>
+<?php foreach ($booking as $item): ?>
+    <div class="flex">
+    <img src="images/destination.png" class="img" alt="destino">
+    <h1>Destino: <?= $item->destination?></h1>
+    </div>
+    <div class="flex">
+    <img src="images/housing.png" class="img" alt="hospedaje">
+    <h4>Hospedaje: <?= substr(htmlspecialchars($item->housing), 0, 25) ?></h2>
+    </div>
+    <div class="flex">
+    <img src="images/date.png" class="img" alt="almanaque">
+    <h4>Checkin: <?=$item->checkin?></h2>
+    </div>
+    <div class="flex">
+    <img src="images/date.png" class="img" alt="almanaque">
+    <h4>Checkout: <?=$item->checkout?></h2>
+    </div>
+
+ <?php endforeach; ?>
+
+<?php require_once 'templates/footer.phtml'?>
+
+
+<style>
+ .img{
+    width:3%;
+    margin-right: 4px;
+ }
+
+ .flex{
+    display: flex;
+    margin-left: 2px;
+
+ }
+

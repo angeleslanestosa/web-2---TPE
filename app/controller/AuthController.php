@@ -2,6 +2,7 @@
 require_once 'app/model/UserModel.php';
 require_once 'app/view/AuthView.php';
 require_once 'app/controller/BookingController.php';
+require_once 'config/config.php';
 
 class AuthController{
     private $model;
@@ -13,7 +14,6 @@ class AuthController{
     }
 
     function showLogin(){
-        // Si el usuario ya esta logueado, redirigimos al home
         if (isset($_SESSION['IDUSUARIO'])) {
             header('Location: ' . BASE_URL . 'home');
             exit();
@@ -25,23 +25,16 @@ class AuthController{
         if(!isset($_POST ['name']) || empty($_POST ['name'])){
             return $this->view->showLogin('Completar nombre de ususario');
         }
-
         if(!isset($_POST ['password']) || empty($_POST ['password'])){
             return $this->view->showLogin('Completar contraseña');
         }
-
         $name = $_POST ['name'];
         $password = $_POST ['password'];
-
         $userFromDb = $this->model->getUser($name);
-        
         if($userFromDb && password_verify($password, $userFromDb->password)){
-            session_start();
-                // Guardo en la sesión el ID del usuario
-            $_SESSION['IDUSUARIO'] = $userFromDb->ID_USUARIO;
+            $_SESSION['IDUSUARIO'] = $userFromDb->IDUSUARIO;
             $_SESSION['name'] = $userFromDb->name;
             $_SESSION['LAST_ACTIVITY'] = time();
-        
             header('Location: ' . BASE_URL . 'home');
             exit();
         } else {
@@ -52,10 +45,11 @@ class AuthController{
     }
 
     function logout() {
-         session_destroy(); // Borra la cookie que se busco
-         header('Location: ' . BASE_URL . 'home');
-         exit();
+        session_destroy();  
+        header('Location: ' . BASE_URL . 'home');
+        exit();
     }
+    
 
 
     

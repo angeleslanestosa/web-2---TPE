@@ -1,1 +1,75 @@
-<h1>hola </h1>
+<?php 
+require_once "templates/header.phtml"; 
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <?php
+    $name = isset($_SESSION['name']) ? $_SESSION['name'] : 'Invitado'; 
+    ?>
+
+    <div>
+        <h2>Bienvenido a TripScript <?php echo htmlspecialchars($name); ?></h2>
+    </div>
+
+    <div>
+        <h3>Reservas realizadas</h3>
+        <h1><?php $bookins?></h1>
+        <ul class="list-group">
+            <?php foreach($bookins as $booking): ?>
+                <li class="list-group-item item-task">
+                    <div class="label">
+                        <a href="showItem/<?= $booking->IDRESERVA?>"> <?= $booking->IDRESERVA?> <b><?= htmlspecialchars($booking->destination) ?></b> | <?= substr(htmlspecialchars($booking->housing),0,25)?></a>
+                    </div>
+                    <div class="actions">
+                        <a href="removeBooking/<?= $booking->IDRESERVA?>" class="btn btn-primary">Borrar</a>
+                        <a href="formEdit/<?= $booking->IDRESERVA?>" class="btn btn-primary">Editar</a>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+
+    <div class="session-actions">
+    <a href="logout">Cerrar sesión</a>
+    <form action="user" method="POST" style="display:inline;">
+        <input type="hidden" name="IDUSUARIO" value="<?php echo $_SESSION['IDUSUARIO']; ?>"> 
+        <input type="hidden" name="action" value="logout">
+    </form>
+</div>
+
+    <style>
+        .session-actions {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 5px; 
+        }
+
+        .session-actions a {
+            display: block; 
+            margin-bottom: 5px; 
+            color: #007bff; 
+            text-decoration: none;
+        }
+
+        .session-actions a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <?php require_once "templates/footer.phtml"; ?>
+</body>
+</html>

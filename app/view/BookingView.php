@@ -4,13 +4,8 @@ require_once 'app/controller/BookingController.php';
 
 class BookingView{
     
-    function showBookings($reservas){
-        foreach($reservas as $reserva){
-            echo $reserva->destination;
-        }
-    }
 
-    function showFormBooking(){
+    function showFormBooking($ruta, $bookingId = null,$button) {
         require_once 'templates/formBooking.phtml';
     }
 
@@ -19,13 +14,21 @@ class BookingView{
     }
 
     function showHome(){
-        require_once "app/view/HomeView.php";
+        require_once "app/view/homeView.php";
     }
 
-    public function showUserPage(){
+    public function showUserPage($id){
         require_once "templates/userPage.phtml";
     }
 
+    public function showBookings($bookins) {
+        $count = count($bookins);
+        require 'templates/userPage.phtml';
+    }
+
+    public function showItem($booking){
+        require_once 'templates/showItem.phtml';
+    }
 
 
 }

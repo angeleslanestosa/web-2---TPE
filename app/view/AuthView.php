@@ -1,4 +1,5 @@
 <?php
+require_once 'config/config.php';
 
 class AuthView{
     private $use = null;

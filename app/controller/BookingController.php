@@ -17,9 +17,12 @@ class BookingController{
         $this->view->showHome();
     }
     
-    //añadir una reserva
-    function addBooking(){
-        $this->view->showFormBooking();
+    
+    public function addBooking(){
+        $ruta = "booking/" ;
+        $bookingId=null;
+        $button="Agregar reserva";
+        $this->view->showFormBooking($ruta, $bookingId,$button);
 
         if (!isset($_POST['destination']) || empty($_POST['destination'])) {
             return $this->view->showMessage('Falta completar el destino');
@@ -45,29 +48,49 @@ class BookingController{
     
     
 
-    //eliminar una reserva
-    function deleteBooking($bookingId){
-        if($this->model->removeBooking($bookingId)){
-            $this->view->showMessage("Reserva eliminada con éxito");
-        }else{
-            $this->view->showMessage("Error al eliminar la reserva");
-        }
-        header ('Location: ' .BASE_URL. 'home');
-        exit();
+ 
+    function removeBooking($bookingId){
+        $bookin = $this->model->getBookings($bookingId);
+        $this->model->removeBooking($bookingId);
+        $this->showBookin();
 
     }
 
-    function showBooking(){
-        $bookin= $this->model->getBookings();
-       // $this->model->showBookin($bookin);
+
+    function showBookin(){
+        $userId= $_SESSION['IDUSUARIO'];
+        $bookins= $this->model->getBookings($userId);
+
+        $this->view->showBookings($bookins);
+        require_once 'templates/userPage.phtml'; 
+
     }
 
+    public function ShowForm($ruta,$bookingId,$button){
+        $this->view->showFormBooking($ruta, $bookingId,$button);
+    }
+    public function editBooking($bookingId) {
+        $booking = $this->model->getBookings($bookingId);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $bookingId = $_POST['bookingId'];
+            $destination = $_POST['destination'];
+            $housing = $_POST['housing'];
+            $checkin = $_POST['checkin'];
+            $checkout = $_POST['checkout'];
     
-    //public function showUserPage(){
-    //    $this->view->showUserPage();
-    //}
-
-}
-
-   
+            if (!empty($destination) && !empty($housing) && !empty($checkin) && !empty($checkout)) {
+                $this->model->updateBookin( $destination, $housing, $checkin, $checkout,$bookingId);
+                $this->showBookin();
+            } 
+        }
+    }
+    
+    public function ShowItem($bookingId){ 
+        $booking = $this->model->getBooking($bookingId);
+        $this->view->showItem($booking);
+    }  
+    
+        
+    }
+ 
 

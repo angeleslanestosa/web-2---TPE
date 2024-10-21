@@ -1,10 +1,10 @@
 <?php require_once 'templates/header.phtml'?>
 
 <div class="content">
-<form action="addDestination" method="get" class="m-4">
-<h3>Registrá un nuevo destino</h3>
+<form action="addDestination" method="POST" class="m-4">
+<h3>Añadí un nuevo destino</h3>
 
-
+<form action="destinations" method="POST">
 <div class="mb-3">
         <label for="name">Ingrese el nombre del destino</label>
         <input type="text" name="name" required>
@@ -34,8 +34,9 @@
             <option value="diciembre">Diciembre</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-primary">Agregar destino</button>
+    <button type="submit" class="btn btn-primary">Añadir destino</button>
 </form>
 </div>
+</form>
 
 <?php require_once 'templates/footer.phtml'?>
