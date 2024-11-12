@@ -1,13 +1,18 @@
 <?php require_once 'templates/header.phtml'?>
 
-
 <form action="<?= htmlspecialchars($ruta) ?>" method="POST" class="m-5">
     <h2>Realizá tu reserva</h2>
     
     <input type="hidden" name="bookingId" value="<?= htmlspecialchars($bookingId) ?>">
     <div class="mb-3">
-        <label for="destination">Ingrese destino</label>
-        <input type="text" name="destination" required>
+        <label for="destino">Destino</label>
+        <select name="destination" required>
+            <?php foreach($destinations as $destination): ?>
+                <option value="<?= htmlspecialchars($destination->name) ?>">
+                    <?= htmlspecialchars($destination->name) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
     </div>
     <div class="mb-3">
         <label for="housing">Ingrese alojamiento</label>

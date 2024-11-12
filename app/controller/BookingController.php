@@ -1,15 +1,18 @@
 <?php
-require_once 'app/model/BookingModel.php';
 require_once 'app/view/BookingView.php';
+require_once 'app/model/DestinationModel.php';
+require_once 'app/model/BookingModel.php';
 
 class BookingController{
     private $model;
+    private $modelDestination;
     private $view;
     private $res;
 
     public function __construct($res) {
         $this->model= new BookingModel();
         $this->view= new BookingView();
+        $this->modelDestination= new DestinationModel();
         $this->res= $res;    
     }
 
@@ -22,7 +25,8 @@ class BookingController{
         $ruta = "booking/" ;
         $bookingId=null;
         $button="Agregar reserva";
-        $this->view->showFormBooking($ruta, $bookingId,$button);
+        $destination= $this->getDestinations();
+        $this->view->showFormBooking($ruta, $bookingId,$button,$destination);
 
         if (!isset($_POST['destination']) || empty($_POST['destination'])) {
             return $this->view->showMessage('Falta completar el destino');
@@ -46,7 +50,10 @@ class BookingController{
             
     }
     
-    
+    function getDestinations(){
+        $destinations= $this->modelDestination->getDestinations();
+        return $destinations;
+    }
 
  
     function removeBooking($bookingId){
@@ -67,7 +74,8 @@ class BookingController{
     }
 
     public function ShowForm($ruta,$bookingId,$button){
-        $this->view->showFormBooking($ruta, $bookingId,$button);
+        $destination= $this->getDestinations();
+        $this->view->showFormBooking($ruta, $bookingId,$button,$destination);
     }
     public function editBooking($bookingId) {
         $booking = $this->model->getBookings($bookingId);
@@ -88,9 +96,6 @@ class BookingController{
     public function ShowItem($bookingId){ 
         $booking = $this->model->getBooking($bookingId);
         $this->view->showItem($booking);
-    }  
-    
-        
     }
- 
-
+    
+}

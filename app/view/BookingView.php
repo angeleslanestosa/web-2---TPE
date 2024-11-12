@@ -5,7 +5,7 @@ require_once 'app/controller/BookingController.php';
 class BookingView{
     
 
-    function showFormBooking($ruta, $bookingId = null,$button) {
+    function showFormBooking($ruta, $bookingId = null,$button, $destinations) {
         require_once 'templates/formBooking.phtml';
     }
 

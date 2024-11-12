@@ -14,13 +14,17 @@
                     <p><strong>Temporada alta:</strong> <?php echo ucfirst($destination->season); ?></p>
                 </div>
                 <div class="card-footer">
+                <?php if (isset($_SESSION['IDUSUARIO']) && $_SESSION['IDUSUARIO'] == true): ?>
                     <a href="aditDestination/<?php echo $destination->IDDESTINATION; ?>" class="btn btn-warning" type="submit">Editar</a>
                     <a href="deleteDestination/<?php echo $destination->IDDESTINATION; ?>" class="btn btn-danger">Eliminar</a>
+                    <?php else: ?>
+                        <p class="text-muted">Inicia sesión para editar o eliminar un destino.</p>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
         <?php endforeach; ?>
-    </div>
+    </div>
 </div>
 
 
