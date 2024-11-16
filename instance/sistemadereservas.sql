@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-10-2024 a las 00:49:33
+-- Tiempo de generación: 16-11-2024 a las 18:34:16
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -40,12 +40,12 @@ CREATE TABLE `destination` (
 --
 
 INSERT INTO `destination` (`IDDESTINATION`, `name`, `description`, `attractions`, `season`) VALUES
+(1, 'Sydney', 'Una de las ciudades más grandes de Australia, es famosa por su Casa de la Ópera de Sídney junto al puerto', 'Opera', 'febrero'),
 (10, 'Paris', 'Una importante ciudad europea, cuna de la moda y con una gastronomia increible.', 'Torre Eiffel, Catedral de Notre Dame, Museo del Louvre', 'octubre'),
 (11, 'Miami', 'Perfecto para compartir un viaje divertido con amigos y divertirse al máximo. ', 'Wynwood walls, Coconut Grove', 'julio'),
 (12, 'New York', 'Perfecto para asombrarse y experimentar la increible y movida vida newyorkina', 'Times Square', 'julio'),
 (19, 'Bali', 'Un lugar increible lleno de naturaleza, paz y muchas olas!', 'Pandawa beach, Monte agung', 'enero'),
-(20, 'Sydney', 'Una de las ciudades más grandes de Australia, es famosa por su Casa de la Ópera de Sídney junto al puerto', 'Opera', 'enero'),
-(21, 'Buenos Aires', 'Buenos Aires es la gran capital cosmopolita de Argentina.', 'Teatro colon', 'enero');
+(20, 'Sydney', 'Una de las ciudades más grandes de Australia, es famosa por su Casa de la Ópera de Sídney junto al puerto', 'Opera', 'enero');
 
 -- --------------------------------------------------------
 
@@ -67,10 +67,11 @@ CREATE TABLE `reserva` (
 --
 
 INSERT INTO `reserva` (`IDRESERVA`, `destination`, `housing`, `checkin`, `checkout`, `IDUSUARIO`) VALUES
-(7, 'Hawaii', 'Hawaii apart', '2024-11-06', '2024-11-22', 16),
-(9, 'Dubai', 'Hilton', '2024-10-31', '2024-11-12', 16),
-(10, 'Orlando', 'Holliday Inn ', '2024-11-06', '2024-11-22', 11),
-(12, 'Buenos Aires', 'Hilton', '2024-10-25', '2024-10-31', 15);
+(10, 'San Rafael, Mendoza', 'San Martin Hotel y spa', '2023-02-09', '2023-02-15', 14),
+(11, 'Destino Ejemplooo', 'Alojamiento Ejemplo', '2024-12-01', '2024-12-10', 14),
+(21, 'Barcelona, España', 'Hotel majestic Barcelona', '2022-03-04', '2022-03-11', 15),
+(22, 'París, Francia', 'Hôtel Central Bastille', '2022-03-12', '2022-03-17', 15),
+(24, 'Tokio, Japón', 'Park Hyatt Tokyo', '2025-05-05', '2025-05-19', 15);
 
 -- --------------------------------------------------------
 
@@ -94,9 +95,9 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`IDUSUARIO`, `name`, `lastname`, `dni`, `email`, `password`, `preferences`) VALUES
 (11, 'Tobias', 'Romano', 43216947, 'tobiasromano151@gmail.com', '$2y$10$Jy992R/r66gd.zliy/ETEueHS1NQ0iWDVsRCZgz944CgVTOqFPORG', 'clima calido'),
+(13, 'Angeles', 'Lanestosa', 43659131, 'angeleslanestosa@gmail.com', '$2y$10$db4/4Phvr1ynlFBu/nrmx./tyyb7x9RohXS.9M/drr67HQRvTQwJ.', 'clima calido'),
 (14, 'Candela', 'Karaman', 45460395, 'candelakaraman@gmail.com', '$2y$10$RuL5v0nGPCoKr8P1gV8J2uAidg6OFphXYurJe9Xo8iyAVIw7xLt2e', 'clima calido'),
-(15, 'webadmin', 'web', 1111, 'webadmin@gmail.com', '$2y$10$5m3l/Sftk8JIc4rS/dO0ye0gqsn48l8W7Qdg.892/PCRbErsO7bcy', 'clima frio'),
-(16, 'Angeles', 'Lanestosa', 43659131, 'angeleslanestosa@gmail.com', '$2y$10$90EMXpS4P24RQBUWh5rsMeM3fJIWb3jyKuzIjdi7naBI2kCsY6ANC', 'clima calido');
+(15, 'webadmin', 'web', 1111, 'webadmin@gmail.com', '$2y$10$5m3l/Sftk8JIc4rS/dO0ye0gqsn48l8W7Qdg.892/PCRbErsO7bcy', 'clima frio');
 
 --
 -- Índices para tablas volcadas
@@ -129,19 +130,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `destination`
 --
 ALTER TABLE `destination`
-  MODIFY `IDDESTINATION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `IDDESTINATION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `IDRESERVA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `IDRESERVA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `IDUSUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `IDUSUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas
